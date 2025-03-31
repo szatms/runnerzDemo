@@ -2,6 +2,7 @@ package Portfolio.JavaDev.runnerz;
 
 import Portfolio.JavaDev.runnerz.run.Location;
 import Portfolio.JavaDev.runnerz.run.Run;
+import Portfolio.JavaDev.runnerz.run.RunRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -19,15 +20,16 @@ public class RunnerzApplication {
 	private static final Logger log  = LoggerFactory.getLogger(RunnerzApplication.class);
 
 	public static void main(String[] args) {
-		SpringApplication.run(RunnerzApplication.class, args);
+		SpringApplication.run(RunnerzApplication.class);
 		//log.info("Something changed!"); //Logger meghívása
 	}
 
-	@Bean
-	CommandLineRunner runner() {
-		return args -> {
-			Run run = new Run(1, "First run", LocalDateTime.now(), LocalDateTime.now().plus(1, ChronoUnit.HOURS), 5, Location.OUTDOOR);
-			log.info("Run " + run);
-		};
-	}
+//	@Bean
+//	CommandLineRunner runner(RunRepository runRepository) {
+//		return args -> {
+//			Run run = new Run(1, "First run", LocalDateTime.now(), LocalDateTime.now().plus(1, ChronoUnit.HOURS), 5, Location.OUTDOOR);
+//			//log.info("Run " + run);
+//			runRepository.create(run);
+//		};
+//	}
 }
